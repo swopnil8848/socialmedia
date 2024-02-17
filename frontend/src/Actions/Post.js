@@ -6,7 +6,8 @@ export const likePost = (id)=> async(dispatch)=>{
     try{
         dispatch({type:LIKE_REQUEST})
 
-        const {data} = await axios.post(`http://localhost:3000/api/v1/post/${id}/`,{},{withCredentials:true});
+        // const {data} = await axios.post(`http://localhost:3000/api/v1/post/${id}/`,{},{withCredentials:true});
+        const {data} = await axios.post(`/api/v1/post/${id}/`,{},{withCredentials:true});
 
         dispatch({type:LIKE_SUCCESS,payload:data.message})
 
@@ -20,7 +21,8 @@ export const addCommentOnPost = (id,comment)=> async(dispatch)=>{
         dispatch({type:ADD_COMMENT_REQUEST})
 
         const { data } = await axios.put(
-            `http://localhost:3000/api/v1/post/comment/${id}/`,
+            // `http://localhost:3000/api/v1/post/comment/${id}/`,
+            `/api/v1/post/comment/${id}/`,
             { comment },
             {
                 withCredentials: true,
@@ -42,7 +44,8 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
         dispatch({ type: DELETE_COMMENT_REQUEST });
 
         const { data } = await axios.delete(
-            `http://localhost:3000/api/v1/post/comment/${id}/`,
+            `/api/v1/post/comment/${id}/`,
+            // `http://localhost:3000/api/v1/post/comment/${id}/`,
             {
                 data: { commentId }, // Pass commentId as data
                 withCredentials: true, // Include withCredentials here
@@ -65,7 +68,8 @@ export const createNewPost = (caption, image) => async (dispatch) => {
         dispatch({ type: NEW_POST_REQUEST });
 
         const { data } = await axios.post(
-            `http://localhost:3000/api/v1/post/upload/`,{
+            `/api/v1/post/upload/`,{
+            // `http://localhost:3000/api/v1/post/upload/`,{
                 caption,
                 image
             },{
@@ -90,7 +94,8 @@ export const updatePost = (caption,id) => async (dispatch) => {
         dispatch({ type: UPDATE_CAPTION_REQUEST });
 
         const { data } = await axios.put(
-            `http://localhost:3000/api/v1/post/${id}/`,{
+            `/api/v1/post/${id}/`,{
+            // `http://localhost:3000/api/v1/post/${id}/`,{
                 caption
             },{
                 withCredentials:true,
@@ -114,7 +119,8 @@ export const deletePost = (id) => async (dispatch) => {
         dispatch({ type: DELETE_POST_REQUEST });
 
         const { data } = await axios.delete(
-            `http://localhost:3000/api/v1/post/${id}/`,{
+            `/api/v1/post/${id}/`,{
+            // `http://localhost:3000/api/v1/post/${id}/`,{
                 withCredentials:true
             }
         );
@@ -131,7 +137,8 @@ export const getuserPosts = (id)=> async(dispatch)=>{
     try{
         dispatch({type:USER_POST_REQUEST})
 
-        const {data} = await axios.get(`http://localhost:3000/api/v1/userposts/${id}`,{withCredentials:true});
+        const {data} = await axios.get(`/api/v1/userposts/${id}`,{withCredentials:true});
+        // const {data} = await axios.get(`http://localhost:3000/api/v1/userposts/${id}`,{withCredentials:true});
 
         console.log(data,"data of user")
 
