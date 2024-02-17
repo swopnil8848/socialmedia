@@ -13,7 +13,7 @@ const path = require('path')
 // }));
 
 app.use(cors({
-    origin: 'http://localhost:3001', // Allow requests from this origin
+    origin: 'https://patans-media.onrender.com/', // Allow requests from this origin
     credentials: true, // Allow cookies to be sent with the request
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
