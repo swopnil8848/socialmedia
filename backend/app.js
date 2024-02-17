@@ -2,6 +2,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser');
 const cors = require('cors')
 const app = express();
+const path = require('path')
 
 // app.use(cors({
 //     origin: 'http://localhost:3001', // Allow requests from this origin
@@ -34,5 +35,11 @@ const user = require('./routes/user');
 // using routes
 app.use('/api/v1',post)
 app.use('/api/v1',user)
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*",function(req,res){
+  res.sendFile(path.join(__dirname,'../frontend/build/index.html'))
+})
 
 module.exports = app;
